@@ -79,9 +79,9 @@ const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="pt-20">
+      <div className="w-full overflow-x-hidden">
         {/* Page Header */}
-        <div className="relative bg-primary py-20">
+        <div className="relative bg-gradient-to-r from-primary via-primary-light to-primary-dark py-24 pt-32">
           <div className="absolute inset-0 overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=2074"

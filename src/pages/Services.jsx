@@ -151,9 +151,9 @@ const Services = () => {
 
   return (
     <PageTransition>
-      <div className="pt-20 relative">
+      <div className="w-full overflow-x-hidden">
         {/* Page Header */}
-        <div className="relative bg-primary py-20">
+        <div className="relative bg-gradient-to-r from-primary via-primary-light to-primary-dark py-24 pt-32">
           <div className="absolute inset-0 overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076"

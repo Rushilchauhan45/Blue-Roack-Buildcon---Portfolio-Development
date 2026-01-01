@@ -1,53 +1,182 @@
 # Blue Rock Buildcon - Premium Builder Portfolio Website
 
-A premium, professional portfolio website for Blue Rock Buildcon - a leading construction and real estate development company.
+A premium, professional portfolio website for Blue Rock Buildcon - a leading construction and real estate development company with over 20 years of excellence.
 
 ## 🏗️ Project Overview
 
-This is a complete, production-ready website built with modern web technologies, featuring smooth animations, responsive design, and an elegant user interface.
+This is a complete, production-ready website built with modern web technologies, featuring smooth animations, responsive design, and an elegant user interface. The website showcases Blue Rock Buildcon's expertise in residential construction, commercial projects, redevelopment, and interior design.
 
-## ✨ Features
+## ✨ Key Features
 
-- **Premium Design**: Modern, professional, and corporate builder-style design
-- **Smooth Animations**: Elegant animations using Framer Motion
-- **Fully Responsive**: Optimized for all devices (mobile, tablet, desktop)
+### 🎨 Design & UX
+- **Premium Design**: Modern, professional corporate builder-style design
+- **Smooth Animations**: Elegant animations using Framer Motion throughout
+- **Fully Responsive**: Optimized for all devices (mobile, tablet, desktop) with NO horizontal scrolling
+- **Transparent Navbar**: Semi-transparent navbar that overlays page content beautifully
+- **Blue Gradient Headers**: Consistent blue gradient backgrounds across all pages
+
+### 🖼️ Interactive Components
 - **Image Carousels**: Interactive project showcases with multiple images
-- **Contact Form**: Fully functional contact form
-- **WhatsApp Integration**: Direct WhatsApp chat option
+- **Testimonials Carousel**: Auto-playing testimonial slider with navigation controls
+- **Hover Effects**: Smooth hover animations on cards and buttons
+- **Page Transitions**: Seamless page transitions with Framer Motion
+
+### 📱 User Engagement
+- **WhatsApp Integration**: Floating WhatsApp button for direct chat
+- **Contact Form**: Fully functional contact form with validation
 - **Google Maps**: Embedded location map
-- **SEO Optimized**: Clean structure for better search engine visibility
+- **Scroll to Top**: Smooth scroll to top button
+- **Statistics Counter**: Animated counter for company achievements
+
+### 🎯 Content Sections
+- **8 Homepage Sections**: Hero, About, Services, Projects, Why Choose Us, Stats, Testimonials, CTA
+- **Dedicated Pages**: About, Projects, Services, Contact
+- **Project Filters**: Filter projects by category (All, Ongoing, Completed)
+- **Service Showcase**: 6 comprehensive service offerings with details
 
 ## 🛠️ Tech Stack
 
-- **React 18**: Modern React with hooks
+- **React 18**: Modern React with hooks and functional components
 - **Vite**: Lightning-fast build tool and dev server
-- **Tailwind CSS**: Utility-first CSS framework
-- **Framer Motion**: Smooth animations and page transitions
-- **React Router DOM**: Client-side routing
-- **Lucide React**: Modern icon library
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **Framer Motion**: Advanced animations and page transitions
+- **React Router DOM v6**: Client-side routing with modern API
+- **Lucide React**: Modern, clean icon library
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Navbar.jsx           # Navigation bar with sticky behavior
+│   ├── Navbar.jsx           # Navigation with SVG logo
 │   ├── Footer.jsx           # Footer with company info & links
-│   ├── Hero.jsx             # Hero section for homepage
+│   ├── Hero.jsx             # Hero section with image slideshow
 │   ├── SectionWrapper.jsx   # Reusable section wrapper with animations
 │   ├── SectionTitle.jsx     # Reusable section title component
 │   ├── PageTransition.jsx   # Page transition wrapper
-│   └── ImageCarousel.jsx    # Image carousel for projects
+│   ├── ImageCarousel.jsx    # Image carousel for projects
+│   ├── FloatingWhatsApp.jsx # Floating WhatsApp button
+│   └── ScrollToTop.jsx      # Scroll to top functionality
 ├── pages/
 │   ├── Home.jsx             # Home page (8 sections)
-│   ├── About.jsx            # About page
-│   ├── Projects.jsx         # Projects page with carousels
-│   ├── Services.jsx         # Services page
+│   ├── About.jsx            # About page with timeline
+│   ├── Projects.jsx         # Projects page with filters
+│   ├── Services.jsx         # Services page with details
 │   └── Contact.jsx          # Contact page with form & map
+├── hooks/
+│   └── useCountUp.js        # Custom hook for animated counters
 ├── utils/
 │   └── motion.js            # Framer Motion animation variants
-├── App.jsx                  # Main app component with routing
+├── App.jsx                  # Main app with routing & overflow fixes
 ├── main.jsx                 # App entry point
+└── index.css                # Global styles with overflow fixes
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Development
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to:
+```
+http://localhost:5173
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The production-ready files will be in the `dist/` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## 🎨 Customization
+
+### Colors
+The color scheme is defined in `tailwind.config.js`:
+- **Primary**: Blue tones (#1e3a8a, #3b82f6, #0ea5e9)
+- **Accent**: Green (#10b981)
+- **Secondary**: Gray shades
+
+### Logo
+The navbar uses an inline SVG logo. To update:
+1. Open `src/components/Navbar.jsx`
+2. Modify the SVG code in the logo section
+
+### Content
+Update content in respective page components:
+- Homepage: `src/pages/Home.jsx`
+- About: `src/pages/About.jsx`
+- Projects: `src/pages/Projects.jsx`
+- Services: `src/pages/Services.jsx`
+- Contact: `src/pages/Contact.jsx`
+
+## 📱 Responsive Design
+
+The website is fully responsive with breakpoints:
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px
+- **Desktop**: > 1024px
+
+All components are tested and optimized for mobile-first design.
+
+## ✅ Recent Updates
+
+### Latest Improvements (January 2026)
+1. ✅ **Fixed Horizontal Overflow**: Added overflow-x-hidden to prevent horizontal scrolling on mobile
+2. ✅ **Navbar Background**: Made navbar transparent/semi-transparent to overlay page backgrounds
+3. ✅ **Blue Headers**: Added consistent blue gradient backgrounds to all page headers
+4. ✅ **Testimonials Carousel**: Converted static testimonials to auto-playing carousel with navigation
+5. ✅ **Logo Update**: Replaced text logo with professional SVG logo
+6. ✅ **Typography Fix**: Optimized hero section font sizes for better readability
+7. ✅ **Component Rendering**: Fixed layout and wrapper issues across all pages
+8. ✅ **SectionWrapper**: Added overflow handling and relative positioning
+
+## 🐛 Bug Fixes
+- Fixed horizontal scrollbar on mobile devices
+- Resolved navbar background consistency issues
+- Fixed component rendering across different pages
+- Improved responsive padding and container widths
+- Added proper overflow handling to all main containers
+
+## 📄 License
+
+This project is private and proprietary to Blue Rock Buildcon.
+
+## 👥 Contact
+
+For any questions or support, please contact:
+- **Email**: info@bluerockbuildcon.com
+- **Phone**: +1 (234) 567-890
+
+---
+
+**Built with ❤️ for Blue Rock Buildcon**
 └── index.css                # Global styles with Tailwind
 ```
 

@@ -54,9 +54,9 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="pt-20">
+      <div className="w-full overflow-x-hidden">
         {/* Page Header */}
-        <div className="relative bg-primary py-20">
+        <div className="relative bg-gradient-to-r from-primary via-primary-light to-primary-dark py-24 pt-32">
           {/* Decorative Elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
             <div className="absolute top-10 left-10 opacity-20">

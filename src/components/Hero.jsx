@@ -25,9 +25,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-[100vh] lg:min-h-[110vh] flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-[100vh] lg:min-h-[110vh] flex items-center justify-center overflow-hidden w-full">
       {/* Background Image with Overlay - Slideshow */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full h-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}
@@ -48,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-24 lg:pt-32">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-24 lg:pt-32">
         <motion.div
           variants={textVariant(0.2)}
           initial="hidden"
@@ -57,14 +57,14 @@ const Hero = () => {
         >
           <motion.p
             variants={fadeIn('down', 0.3)}
-            className="text-accent-light text-lg md:text-xl font-semibold tracking-wider uppercase drop-shadow-lg"
+            className="text-accent-light text-sm md:text-base font-semibold tracking-wider uppercase drop-shadow-lg"
           >
             Premium Builder & Real Estate Developer
           </motion.p>
           
           <motion.h1
             variants={textVariant(0.4)}
-            className="text-5xl md:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-2xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl"
           >
             Building Your Dreams
             <br />
@@ -73,7 +73,7 @@ const Hero = () => {
           
           <motion.p
             variants={fadeIn('up', 0.5)}
-            className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto drop-shadow-lg"
+            className="text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto drop-shadow-lg leading-relaxed"
           >
             Transforming spaces into extraordinary living experiences with
             world-class construction and architectural excellence

@@ -2,9 +2,10 @@ import Hero from '../components/Hero';
 import SectionWrapper from '../components/SectionWrapper';
 import SectionTitle from '../components/SectionTitle';
 import PageTransition from '../components/PageTransition';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, scaleIn } from '../utils/motion';
 import { useCountUp } from '../hooks/useCountUp';
+import { useState, useEffect } from 'react';
 import {
   Building2,
   HardHat,
@@ -19,10 +20,14 @@ import {
   Star,
   ArrowRight,
   Quote,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
   const services = [
     {
       icon: HomeIcon,
@@ -119,11 +124,41 @@ const Home = () => {
       text: 'Working with Blue Rock has been a pleasure. Their expertise in redevelopment is unmatched. Every project is a masterpiece.',
       rating: 5,
     },
+    {
+      name: 'Sarah Johnson',
+      role: 'Villa Owner',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200',
+      text: 'Outstanding service from start to finish! Our villa was completed on time and exceeded our expectations in every way.',
+      rating: 5,
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Corporate Client',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200',
+      text: 'Blue Rock delivered a world-class office space that has impressed all our clients. True professionals in every sense.',
+      rating: 5,
+    },
   ];
+
+  // Auto-play carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <PageTransition>
-      <div>
+      <div className="w-full overflow-x-hidden">
         {/* Hero Section */}
         <Hero />
 
@@ -475,34 +510,92 @@ const Home = () => {
             title="What Our Clients Say"
             description="Don't just take our word for it - hear from our satisfied clients"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn('up', index * 0.1)}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-xl shadow-premium hover:shadow-2xl transition-all relative"
-              >
-                <Quote className="text-accent/20 absolute top-4 right-4" size={48} />
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="font-bold text-lg text-primary">{testimonial.name}</h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
+          
+          {/* Testimonials Carousel */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Carousel Container */}
+            <div className="relative overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTestimonial}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="bg-white p-8 md:p-12 rounded-2xl shadow-premium relative"
+                >
+                  <Quote className="text-accent/20 absolute top-6 right-6" size={60} />
+                  
+                  {/* Testimonial Content */}
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-6">
+                      <img
+                        src={testimonials[currentTestimonial].image}
+                        alt={testimonials[currentTestimonial].name}
+                        className="w-20 h-20 rounded-full object-cover mr-4 border-4 border-accent/20"
+                      />
+                      <div>
+                        <h4 className="font-bold text-2xl text-primary">
+                          {testimonials[currentTestimonial].name}
+                        </h4>
+                        <p className="text-gray-600 text-lg">
+                          {testimonials[currentTestimonial].role}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex mb-4">
+                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                        <Star key={i} className="text-yellow-400 fill-current" size={24} />
+                      ))}
+                    </div>
+                    
+                    <p className="text-gray-700 text-lg leading-relaxed italic">
+                      "{testimonials[currentTestimonial].text}"
+                    </p>
                   </div>
-                </div>
-                <div className="flex mb-3">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="text-yellow-400 fill-current" size={18} />
-                  ))}
-                </div>
-                <p className="text-gray-700 leading-relaxed italic">"{testimonial.text}"</p>
-              </motion.div>
-            ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-between mt-8">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={prevTestimonial}
+                className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-colors"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={24} />
+              </motion.button>
+
+              {/* Pagination Dots */}
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentTestimonial
+                        ? 'w-8 h-3 bg-primary'
+                        : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={nextTestimonial}
+                className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-colors"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={24} />
+              </motion.button>
+            </div>
           </div>
         </SectionWrapper>
 

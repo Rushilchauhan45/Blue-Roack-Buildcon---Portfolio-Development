@@ -34,23 +34,57 @@ const Navbar = () => {
       }`}
     >
       {/* Modern Pill-Shaped Container */}
-      <div className="max-w-[95%] lg:max-w-7xl mx-auto">
-        <div className="bg-white rounded-full border border-gray-200 shadow-xl">
+      <div className="w-full max-w-[95%] lg:max-w-7xl mx-auto px-2 sm:px-0">
+        <div className="bg-white/95 backdrop-blur-md rounded-full border border-white/20 shadow-xl overflow-hidden">
           <div className="px-6 lg:px-8">
             <div className="flex justify-between items-center h-16 lg:h-18">
               {/* Logo */}
               <Link to="/" className="flex items-center group flex-shrink-0">
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="text-xl lg:text-2xl font-bold"
+                  className="h-10 lg:h-12 flex items-center"
                 >
-                  <span className="bg-gradient-to-br from-[#1e3a8a] via-[#3b82f6] to-[#0ea5e9] bg-clip-text text-transparent font-black tracking-tight">
-                    Blue Rock
-                  </span>
-                  <span className="ml-1.5 bg-gradient-to-br from-[#10b981] via-[#0ea5e9] to-[#1e3a8a] bg-clip-text text-transparent font-black tracking-tight">
-                    Buildcon
-                  </span>
+                  {/* Logo SVG - Blue Rock Buildcon */}
+                  <svg 
+                    className="h-full w-auto" 
+                    viewBox="0 0 500 150" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* BLUEROCK text */}
+                    <text 
+                      x="250" 
+                      y="75" 
+                      fontSize="70" 
+                      fontWeight="900" 
+                      fill="#1e3a8a" 
+                      textAnchor="middle" 
+                      fontFamily="Arial, sans-serif"
+                      letterSpacing="2"
+                    >
+                      BLUEROCK
+                    </text>
+                    {/* BUILDCON text */}
+                    <text 
+                      x="250" 
+                      y="125" 
+                      fontSize="32" 
+                      fontWeight="600" 
+                      fill="#1e3a8a" 
+                      textAnchor="middle" 
+                      fontFamily="Arial, sans-serif"
+                      letterSpacing="8"
+                    >
+                      BUILDCON
+                    </text>
+                    {/* Decorative lines */}
+                    <line x1="30" y1="105" x2="100" y2="105" stroke="#1e3a8a" strokeWidth="2"/>
+                    <line x1="30" y1="110" x2="100" y2="110" stroke="#1e3a8a" strokeWidth="2"/>
+                    <line x1="30" y1="115" x2="100" y2="115" stroke="#1e3a8a" strokeWidth="2"/>
+                    <line x1="400" y1="105" x2="470" y2="105" stroke="#1e3a8a" strokeWidth="2"/>
+                    <line x1="400" y1="110" x2="470" y2="110" stroke="#1e3a8a" strokeWidth="2"/>
+                    <line x1="400" y1="115" x2="470" y2="115" stroke="#1e3a8a" strokeWidth="2"/>
+                  </svg>
                 </motion.div>
               </Link>
 
